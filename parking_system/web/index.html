@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PARKIR // Kampus — Pemantauan Terdistribusi</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">
+    <span class="brand-mark">◫</span>
+    <div class="brand-text">
+      <h1>PARKIR<span class="accent">/KAMPUS</span></h1>
+      <p class="subtitle">Sistem terdistribusi pemantauan ketersediaan &amp; riwayat lahan parkir</p>
+    </div>
+  </div>
+  <div class="live-status">
+    <span id="conn-dot" class="dot"></span>
+    <span id="conn-text">menghubungkan…</span>
+  </div>
+</header>
+
+<section class="summary-strip" id="summary-strip">
+  <div class="summary-cell">
+    <span class="summary-value" id="sum-lots">–</span>
+    <span class="summary-label">Lahan Terpantau</span>
+  </div>
+  <div class="summary-cell">
+    <span class="summary-value" id="sum-available">–</span>
+    <span class="summary-label">Slot Tersedia</span>
+  </div>
+  <div class="summary-cell">
+    <span class="summary-value" id="sum-occupied">–</span>
+    <span class="summary-label">Slot Terisi</span>
+  </div>
+  <div class="summary-cell">
+    <span class="summary-value" id="sum-rate">–</span>
+    <span class="summary-label">Okupansi Kampus</span>
+  </div>
+  <div class="summary-cell">
+    <span class="summary-value" id="sum-online">–</span>
+    <span class="summary-label">Node Online</span>
+  </div>
+</section>
+
+<main>
+  <div class="toolbar">
+    <input type="text" id="search-input" placeholder="Cari lahan parkir… (nama, lokasi, kode)" />
+    <div class="toolbar-sort">
+      <button class="sort-btn active" data-sort="name">Nama</button>
+      <button class="sort-btn" data-sort="available">Tersedia</button>
+      <button class="sort-btn" data-sort="rate">Okupansi</button>
+    </div>
+  </div>
+  <section class="lots-grid" id="lots-grid">
+    <!-- kartu lahan parkir dirender via JS -->
+  </section>
+
+  <section class="history-panel" id="history-panel">
+    <div class="history-header">
+      <h2>Riwayat Okupansi — <span id="history-lot-name">pilih lahan…</span></h2>
+      <span class="history-hint">klik salah satu kartu lahan untuk melihat riwayatnya</span>
+    </div>
+    <canvas id="history-canvas" width="1000" height="260"></canvas>
+  </section>
+
+  <section class="info-panel" id="info-panel" hidden>
+    <div class="info-photo" id="info-photo"></div>
+    <div class="info-body">
+      <span class="info-eyebrow" id="info-type">Sekolah Agama</span>
+      <h2 id="info-title">—</h2>
+      <p class="info-address" id="info-address">—</p>
+      <div class="info-grid" id="info-grid"></div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <p>Node melapor mandiri ke server pusat via HTTP, pembaruan disiarkan real-time lewat WebSocket.</p>
+</footer>
+
+<script src="/static/app.js"></script>
+</body>
+</html>
